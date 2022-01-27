@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Cup, Using
+
+admin.site.register(Cup)
+# register the new Feeding Model 
+admin.site.register(Using)
