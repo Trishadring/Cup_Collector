@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Cup
+from .models import Cup, Sticker
 from .forms import UsingForm
 
 # from .models import Cup
@@ -41,10 +41,13 @@ def cup_index(request):
 
 
 def cup_detail(request, cup_id):
-    cup = Cup.objects.get(id=cup_id)
-    using_form = UsingForm()
-    return render(request, 'cups/detail.html', {
-        'cup': cup, 'using_form': using_form
+		cup = Cup.objects.get(id=cup_id)
+		stickers_cup_no_have = Sticker.objects.exclude(
+		    id__in=cup.stickers.all().values_list('id'))
+		using_form = UsingForm()
+		return render(request, 'cups/detail.html', {
+        'cup': cup, 'using_form': using_form,
+				'stickers': stickers_cup_no_have
     })
 
 
