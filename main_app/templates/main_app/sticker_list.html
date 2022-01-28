@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Sticker List</h1>
+
+{% for sticker in sticker_list %}
+<a href="{% url 'stickers_detail' sticker.id %}">
+	<div class="card">
+		<div class="card-content">
+			<span class="card-title">{{ sticker.name }}</span>
+			<p>Color: {{ sticker.color }}</p>
+		</div>
+	</div>
+</a>
+{% endfor %}
+
+{% endblock %}

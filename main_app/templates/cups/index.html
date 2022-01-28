@@ -5,13 +5,13 @@
 
 {% for cup in cups %}
 <a href="{% url 'detail' cup.id %}">
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ cup.color }} {{ cup.type }} </span>
+	<div class="card">
+		<div class="card-content">
+			<span class="card-title">{{ cup.color }} {{ cup.type }} </span>
 			<p>Brand: {{ cup.brand }} </p>
-      <p>Description: {{ cup.description }}</p>
-    </div>
-  </div>
+			<p>Description: {{ cup.description }}</p>
+		</div>
+	</div>
 </a>
 
 {% endfor %}{% endblock %}

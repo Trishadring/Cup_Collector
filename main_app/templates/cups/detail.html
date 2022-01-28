@@ -22,76 +22,79 @@
 			{{ using_form.as_p }}
 			<input type="submit" class="btn" value="Add Use">
 		</form>
-    <table class="striped">
-      <thead>
-        <tr><th>Date</th><th>Contents</th></tr>
-      </thead>
-      <tbody>
-        {% for using in cup.using_set.all %}
-          <tr>
-            <td>{{using.date}}</td>
-            <td>{{using.get_content_display}}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Contents</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for using in cup.using_set.all %}
+				<tr>
+					<td>{{using.date}}</td>
+					<td>{{using.get_content_display}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <!-- This is all new markup to be added just above the <script> tag -->
-	<hr>
-	<div class="row">
-		<div class="col s6">
-			<h3>{{ cup.color }} {{ cup.type }}'s Stickers</h3>
-			{% if cup.stickers.count %}
-				{% for sticker in cup.stickers.all %}
-					<div class="card">
-						<div class="card-content">
-							<span class="card-title">
-								A {{ sticker.color }} {{ sticker.name }}
-							</span>
-						</div>
-					</div>
-				{% endfor %}
-			{% else %}
-				<h5>No Stickers :(</h5>
-			{% endif %}
+<hr>
+<div class="row">
+	<div class="col s6">
+		<h3>{{ cup.color }} {{ cup.type }}'s Stickers</h3>
+		{% if cup.stickers.count %}
+		{% for sticker in cup.stickers.all %}
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">
+					A {{ sticker.color }} {{ sticker.name }}
+				</span>
+			</div>
 		</div>
-		<div class="col s6">
-			<h3>Available Stickers</h3>
-			{% if stickers.count %}
-				{% for sticker in stickers.all %}
-					<div class="card">
-						<div class="card-content">
-							<span class="card-title">
-								A {{ sticker.color }} {{ sticker.name }}
-							</span>
-						</div>
-						<div class="card-action">
-							<form action="" method="post">
-								{% csrf_token %}
-								<button type="submit" class="btn">Add</button>
-							</form>
-						</div>
-					</div>
-				{% endfor %}
-			{% else %}
-				<h5>{{ cup.color }} {{ cup.type }} Already Has All Stickers Available</h5>
-			{% endif %}
-		</div>
-		<!-- Available stickers will come after this line -->
+		{% endfor %}
+		{% else %}
+		<h5>No Stickers :(</h5>
+		{% endif %}
 	</div>
+	<div class="col s6">
+		<h3>Available Stickers</h3>
+		{% if stickers.count %}
+		{% for sticker in stickers.all %}
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">
+					A {{ sticker.color }} {{ sticker.name }}
+				</span>
+			</div>
+			<div class="card-action">
+				<form action="{% url 'assoc_sticker' cup.id sticker.id %}" method="post">
+					{% csrf_token %}
+					<button type="submit" class="btn">Add</button>
+				</form>
+			</div>
+		</div>
+		{% endfor %}
+		{% else %}
+		<h5>{{ cup.color }} {{ cup.type }} Already Has All Stickers Available</h5>
+		{% endif %}
+	</div>
+	<!-- Available stickers will come after this line -->
+</div>
 
 <script>
 	const dateEl = document.getElementById('id_date');
-  M.Datepicker.init(dateEl, {
-    format: 'yyyy-mm-dd',
-    defaultDate: new Date(),
-    setDefaultDate: true,
-    autoClose: true
-  });
+	M.Datepicker.init(dateEl, {
+		format: 'yyyy-mm-dd',
+		defaultDate: new Date(),
+		setDefaultDate: true,
+		autoClose: true
+	});
 
 	const selectEl = document.getElementById('id_content');
-  M.FormSelect.init(selectEl);
+	M.FormSelect.init(selectEl);
 </script>
 {% endblock %}
