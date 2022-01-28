@@ -5,22 +5,22 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('main_app', '0005_auto_20220127_0049'),
-    ]
+		dependencies = [
+				('main_app', '0005_auto_20220127_0049'),
+		]
 
-    operations = [
-        migrations.RenameModel(
-            old_name='Toy',
-            new_name='Sticker',
-        ),
-        migrations.RemoveField(
-            model_name='cup',
-            name='toys',
-        ),
-        migrations.AddField(
-            model_name='cup',
-            name='stickers',
-            field=models.ManyToManyField(to='main_app.Sticker'),
-        ),
-    ]
+		operations = [
+				migrations.RenameModel(
+						old_name='Toy',
+						new_name='Sticker',
+				),
+				migrations.RemoveField(
+						model_name='cup',
+						name='toys',
+				),
+				migrations.AddField(
+						model_name='cup',
+						name='stickers',
+						field=models.ManyToManyField(to='main_app.Sticker'),
+				),
+		]

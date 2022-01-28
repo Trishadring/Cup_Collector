@@ -5,19 +5,19 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('main_app', '0002_using'),
-    ]
+		dependencies = [
+				('main_app', '0002_using'),
+		]
 
-    operations = [
-        migrations.RenameField(
-            model_name='using',
-            old_name='contents',
-            new_name='content',
-        ),
-        migrations.AlterField(
-            model_name='using',
-            name='date',
-            field=models.DateField(verbose_name='used date'),
-        ),
-    ]
+		operations = [
+				migrations.RenameField(
+						model_name='using',
+						old_name='contents',
+						new_name='content',
+				),
+				migrations.AlterField(
+						model_name='using',
+						name='date',
+						field=models.DateField(verbose_name='used date'),
+				),
+		]

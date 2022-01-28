@@ -6,18 +6,18 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('main_app', '0001_initial'),
-    ]
+		dependencies = [
+				('main_app', '0001_initial'),
+		]
 
-    operations = [
-        migrations.CreateModel(
-            name='Using',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField()),
-                ('contents', models.CharField(choices=[('T', 'Tea'), ('C', 'Coffee'), ('M', 'Milk'), ('W', 'Water'), ('A', 'Alcohol')], default='T', max_length=1)),
-                ('cup', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_app.cup')),
-            ],
-        ),
-    ]
+		operations = [
+				migrations.CreateModel(
+						name='Using',
+						fields=[
+								('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+								('date', models.DateField()),
+								('contents', models.CharField(choices=[('T', 'Tea'), ('C', 'Coffee'), ('M', 'Milk'), ('W', 'Water'), ('A', 'Alcohol')], default='T', max_length=1)),
+								('cup', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main_app.cup')),
+						],
+				),
+		]
